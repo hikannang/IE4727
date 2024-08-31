@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #d2b48c;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #8b4513;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        nav {
+            width: 20%;
+            background-color: #f5deb3;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        nav a {
+            display: block;
+            color: #8b4513;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        section {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f8f4f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+        }
+        img {
+            width: 50%;
+            height: auto;
+            margin-right: 20px;
+        }
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #8b4513;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        JavaJam Coffee House
+    </header>
+    <main>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="music.html">Music</a>
+            <a href="jobs.html">Jobs</a>
+        </nav>
+        <section>
+            <h2>Follow the Winding Road to JavaJam</h2>
+            <div class="content">
+                <img src="windingroad.jpg" alt="Winding Road">
+                <div class="text-content">
+                    <ul>
+                        <li>Specialty Coffee and Tea</li>
+                        <li>Bagels, Muffins, and Organic Snacks</li>
+                        <li>Music and Poetry Readings</li>
+                        <li>Open Mic Night Every Friday</li>
+                    </ul>
+                    <address>
+                        54321 Route 42<br>
+                        Ellison Bay, WI 54210<br>
+                        888-555-8888
+                    </address>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © 2014 JavaJam Coffee House<br>
+        hongwei@leong.com</p>
+    </footer>
+</body>
+</html>
