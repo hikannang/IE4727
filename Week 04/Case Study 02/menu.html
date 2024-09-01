@@ -1,36 +1,124 @@
-<!doctype html>
-<html lang ="en">
-    <head>
-        <title>JavaJam Coffee House</title>
-        <meta charset = "utf-8">
-    </head>
-    <body>
-        <header>
-            <h1>JavaJam Coffee House</h1>
-        </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House - Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1;
+            background-color: #d2b48c;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #CAB493;
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        nav {
+            width: 20%;
+            background-color: #DED1B5;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align:center;
+        }
+        nav a {
+            display: block;
+            color: #8b4513;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        section {
+            width: 80%;
+            padding: 1%;
+            box-sizing: border-box;
+            background-color: #F5F4DF;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+        }
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .tab {
+            display:inline-block;
+            margin-left: 40px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #CAB493;
+            color: #000000;
+        }
+        table {
+            margin-left: 10%;
+            width: 80%;
+        }
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+        tr:nth-child(even) td {
+            background-color: #f5deb3;
+        }
+        tr:nth-child(odd) td {
+            background-color: #d2b48c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        JavaJam Coffee House
+    </header>
+    <main>
         <nav>
-            <b><a href="index.html">Home</a> &nbsp; 
-                <a href="menu.html">Menu</a> &nbsp;
-                <a href="music.html">Music</a> &nbsp;
-                <a href="jobs.html">Jobs</a>
-            </b>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="music.html">Music</a>
+            <a href="jobs.html">Jobs</a>
         </nav>
-        <div>
-            <dl>
-                <dt><strong>Just Java</strong></dt>
-                <dd>Regular house blend, decaffinated coffee or flavour of the day.</dd>
-                <dd>Endless Cup: $2.00</dd>
-                <dt><strong>Cafe au Lait</strong></dt>
-                <dd>House blended coffee infused into a smooth, steamed milk.</dd>
-                <dd>Single: $2.00 Double: $3.00</dd>
-                <dt><strong>Iced Cappuccino</strong></dt>
-                <dd>Sweetened espresso blended with icy-cold milk and served in a chill glass.</dd>
-                <dd>Single: $4.75 Double $5.75</dd>
-            </dl>
-        </div>
-        <footer>
-            <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
-            <small><i><a href="mailto:hongwei@leong.com"><br>hongwei@leong.com</a></i></small>
-        </footer>
-    </body>
+        <section>
+            <h2>Coffee at JavaJam</h2>
+            <table>
+                <tr>
+                    <td><strong>Just Java</strong></td>
+                    <td>Regular house blend, decaffeinated coffee, or flavor of the day.<br>
+                    <strong>Endless Cup $2.00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Cafe au Lait</strong></td>
+                    <td>House blended coffee infused into a smooth, steamed milk.<br>
+                    <strong>Single $2.00 Double $3.00</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Iced Capppacino</strong></td>
+                    <td>Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br>
+                    <strong>Single $4.75 Double $5.75</strong></td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+        hongwei@leong.com</i></small>
+    </footer>
+</body>
 </html>

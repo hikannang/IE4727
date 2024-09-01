@@ -1,37 +1,167 @@
 <!doctype html>
 <html lang ="en">
     <head>
-        <title>JavaJam Coffee House</title>
-        <meta charset = "utf-8">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House - Menu</title>
     </head>
-    <body>
-        <header>
-            <h1>JavaJam Coffee House</h1>
-        </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1;
+            background-color: #d2b48c;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #CAB493;
+            color: #000000;
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        nav {
+            width: 20%;
+            background-color: #DED1B5;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align:center;
+        }
+        nav a {
+            display: block;
+            color: #8b4513;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        section {
+            width: 90%;
+            padding: 1%;
+            box-sizing: border-box;
+            background-color: #F5F4DF;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+        }
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #CAB493;
+            color: #000000;
+        }
+        table {
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 80%;
+        }
+        td {
+            padding: 10px;
+            width:auto;
+            text-align: left;
+        }
+        tr:nth-child(even) td {
+            padding-left: 5%;
+            width: auto;
+            background-color: #F5F4DF;
+        }
+        tr:nth-child(odd) td {
+            background-color: #d2b48c;
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        .event img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .event-description {
+            font-weight: normal;
+        }
+        audio {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        JavaJam Coffee House
+    </header>
+    <main>
         <nav>
-            <b><a href="index.html">Home</a> &nbsp; 
-                <a href="menu.html">Menu</a> &nbsp;
-                <a href="music.html">Music</a> &nbsp;
-                <a href="jobs.html">Jobs</a>
-            </b>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="music.html">Music</a>
+            <a href="jobs.html">Jobs</a>
         </nav>
-        <div>
-            <h1>Music on offer today: 20<sup>th</sup> August 2024</h1>
-            <dl>
-                <dt><strong>Mandopop</strong></dt>
-                <dd>Artists: 告五人, Joker Xue, Qiu Feng Ze</dd>
-                <dd>Songs: 一念之间，一起寂寞，想对你说</dd><br>
-                <dt><strong>NDP 2024</strong></dt>
-                <dd>Artists: Benjamin Kheng, The Island Voices, Me</dd>
-                <dd>Songs: Not Alone, The Road Ahead, We will get there</dd><br>
-                <dt><strong>English Pop</strong></dt>
-                <dd>Artists: Taylor Swift, Maroon 5, Me</dd>
-                <dd>Fearless, Daylight, Eenie Meenie</dd>
-            </dl>
-        </div>
-        <footer>
-            <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
-            <small><i><a href="mailto:hongwei@leong.com"><br>hongwei@leong.com</a></i></small>
-        </footer>
+        <section>
+            <h2>Music at JavaJam</h2>
+            <p>The first Friday night each month at JavaJam is a special night. Join us from 8pm to 11pm for some music you won't want to miss.</p>
+            <table>
+                <tr>
+                    <td>高爾宣 OSN</td>
+                </tr>
+                <tr>
+                    <td>
+                    <div class ="event">
+                        <img src="/Week 04/Case Study 02/Pictures/osn.jpeg" alt="osn">
+                        <div>
+                            <div class = "event-description">
+                                Melanie morris entertains with her melodic folk style. <br>
+                                <strong>CDs are available now!</strong>
+                            </div>
+                            <audio controls>
+                                <source src = "/Week 04/Case Study 02/Audio/holdon.mp3" type = "audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Benjamin Kheng</td>
+                </tr>
+                <tr>
+                    <td>
+                    <div class ="event">
+                        <img src="/Week 04/Case Study 02/Pictures/ndp.jpg" alt="ndp">
+                        <div>
+                            <div class = "event-description">
+                                Melanie morris entertains with her melodic folk style. <br>
+                                <strong>CDs are available now!</strong>
+                            </div>
+                            <audio controls>
+                                <source src = "/Week 04/Case Study 02/Audio/notalone.mp3" type = "audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
+        <small><i><a href="mailto:hongwei@leong.com"><br>hongwei@leong.com</a></i></small>
+    </footer>
     </body>
 </html>

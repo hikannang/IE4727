@@ -7,15 +7,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
+            margin: 1;
             background-color: #d2b48c;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
         header {
-            background-color: #8b4513;
-            color: #ffffff;
+            background-color: #CAB493;
+            color: #000000;
             text-align: center;
             padding: 20px;
             font-size: 2em;
@@ -26,28 +25,27 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            padding: 20px;
             box-sizing: border-box;
         }
         nav {
             width: 20%;
-            background-color: #f5deb3;
+            background-color: #DED1B5;
             padding: 20px;
             box-sizing: border-box;
+            text-align:center;
         }
         nav a {
             display: block;
             color: #8b4513;
             text-decoration: none;
             font-weight: bold;
-            margin: 10px 0;
             font-size: 1.1em;
         }
         section {
             width: 80%;
-            padding: 20px;
+            padding: 1%;
             box-sizing: border-box;
-            background-color: #f8f4f0;
+            background-color: #F5F4DF;
             display: flex;
             flex-direction: column;
         }
@@ -56,7 +54,9 @@
             align-items: flex-start;
         }
         img {
-            width: 50%;
+            padding-left: 20px;
+            padding-bottom: 30px;
+            width: 40%;
             height: auto;
             margin-right: 20px;
         }
@@ -65,12 +65,17 @@
             flex-direction: column;
             justify-content: center;
         }
+        .tab {
+            display:inline-block;
+            margin-left: 40px;
+        }
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #8b4513;
-            color: #ffffff;
+            background-color: #CAB493;
+            color: #000000;
         }
+        
     </style>
 </head>
 <body>
@@ -95,11 +100,11 @@
                         <li>Music and Poetry Readings</li>
                         <li>Open Mic Night Every Friday</li>
                     </ul>
-                    <address>
-                        54321 Route 42<br>
+                    <p>
+                        <span class= "tab">54321 Route 42<br>
                         Ellison Bay, WI 54210<br>
                         888-555-8888
-                    </address>
+                    </p>
                 </div>
             </div>
         </section>
