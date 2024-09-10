@@ -9,8 +9,8 @@ const FormValidationExample = () => {
     confirmPassword: "",
   });
 
-  //setting up state variable errors to manage form validation errors
   const [errors, setErrors] = useState({});
+
   const validateForm = (data) => {
     const validationErrors = {};
     if (!formData.username.trim()) {
@@ -26,39 +26,27 @@ const FormValidationExample = () => {
     } else if (formData.password.length < 6) {
       validationErrors.password = "Password should have at least 6 characters";
     }
-    if (formData.password != formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       validationErrors.confirmPassword = "Password not matched";
     }
     return validationErrors;
   };
 
-  //handleChange function is used to update the formData state based on the user input in the form fields
   const handleChange = (event) => {
-    //extract the name (input fields) and value (user input) from the event target
     const { name, value } = event.target;
-    setFormData((prevData) => {
-      const updatedData = {
-        //use ... spread operator to optain the existing data in formData and update the specific input field with the new value
-        ...prevData,
-        [name]: value,
-      };
-      return updatedData;
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  //handleSubmit function is used to validate the form data when the form is submitted
   const handleSubmit = (event) => {
-    //Prevent the default form submission behaviour
-    //Check each form field for validation errors based on the defined criteria
     event.preventDefault();
     const validationErrors = validateForm(formData);
-    //If there are no validation errors, an alert is shown and the input fields are cleared
     if (Object.keys(validationErrors).length === 0) {
       alert("Form has been submitted successfully!");
       console.log(formData);
-      //Clear all input fields
       event.target.reset();
-      // Reset the formData state to clear the form fields
       setFormData({
         username: "",
         email: "",
@@ -69,6 +57,16 @@ const FormValidationExample = () => {
     } else {
       setErrors(validationErrors);
     }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setErrors({});
   };
 
   return (
@@ -84,6 +82,7 @@ const FormValidationExample = () => {
           required={true}
         />
         {errors.username && <p>{errors.username}</p>}
+        
         <label>Email</label>
         <input
           name="email"
@@ -94,6 +93,7 @@ const FormValidationExample = () => {
           required={true}
         />
         {errors.email && <p>{errors.email}</p>}
+        
         <label>Password</label>
         <input
           name="password"
@@ -104,6 +104,7 @@ const FormValidationExample = () => {
           required={true}
         />
         {errors.password && <p>{errors.password}</p>}
+        
         <label>Confirm Password</label>
         <input
           name="confirmPassword"
@@ -114,9 +115,15 @@ const FormValidationExample = () => {
           required={true}
         />
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit" className="enabled">
-          Submit
-        </button>
+
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <button type="button" onClick={handleReset} className="enabled">
+            Reset
+          </button>
+          <button type="submit" className="enabled">
+            Submit
+          </button>
+        </div>
       </form>
     </>
   );

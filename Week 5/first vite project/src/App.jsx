@@ -1,7 +1,6 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-// import FormValidationExample from "./FormValidationExample";
 import "./App.css";
 
 function App() {
@@ -12,23 +11,17 @@ function App() {
     confirmPassword: "",
   });
 
-  //setting up state variable errors to manage form validation errors
   const [errors, setErrors] = useState({});
 
-  //setting up formStatus to manage form validation errors
   const [formStatus, setFormStatus] = useState({
     passwordsMatch: false,
     passwordLength: false,
     isSubmitButtonEnabled: false,
   });
 
-  // Validation logic moved to a separate function
   const validateForm = (updatedData) => {
-    // Check if passwords match after state update
     const passwordsMatch = updatedData.password === updatedData.confirmPassword;
-    //Check if password is at least 6 characters
     const passwordLength = updatedData.password.length >= 6;
-    // Check if all fields are filled after state update
     const allFieldsFilled = Object.values(updatedData).every((value) =>
       Boolean(value.trim())
     );
@@ -57,13 +50,10 @@ function App() {
     });
   };
 
-  //handleChange function is used to update the formData state based on the user input in the form fields
   const handleChange = (event) => {
-    //extract the name (input fields) and value (user input) from the event target
     const { name, value } = event.target;
     setFormData((prevData) => {
       const updatedData = {
-        //use ... spread operator to optain the existing data in formData and update the specific input field with the new value
         ...prevData,
         [name]: value.trimStart(),
       };
@@ -72,28 +62,11 @@ function App() {
     });
   };
 
-  //handleSubmit function is used to validate the form data when the form is submitted
   const handleSubmit = (event) => {
-    //Prevent the default form submission behaviour
-    //Check each form field for validation errors based on the defined criteria
     event.preventDefault();
-    setFormData((prevData) => {
-      const updatedData = {
-        //use ... spread operator to optain the existing data in formData and update the specific input field with the new value
-        ...prevData,
-      };
-      // Iterate through formData and trim each value
-      for (let key in formData) {
-        if (formData.hasOwnProperty(key)) {
-          formData[key] = formData[key].trim();
-        }
-      }
-      return updatedData;
-    });
     alert("Form has been submitted successfully!");
     console.log(formData);
 
-    // Reset the formData state to clear the form fields
     setFormData({
       username: "",
       email: "",
@@ -105,8 +78,22 @@ function App() {
       passwordLength: false,
       isSubmitButtonEnabled: false,
     });
-    // Clear the input fields
     event.target.reset();
+  };
+
+  const handleReset = () => {
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setErrors({});
+    setFormStatus({
+      passwordsMatch: false,
+      passwordLength: false,
+      isSubmitButtonEnabled: false,
+    });
   };
 
   return (
@@ -152,13 +139,16 @@ function App() {
           required={true}
         />
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button
-          type="submit"
-          disabled={!formStatus.isSubmitButtonEnabled}
-          className={formStatus.isSubmitButtonEnabled ? "enabled" : "disabled"}
-        >
-          Submit
-        </button>
+        
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <button type="button" onClick={handleReset} className={`button ${formStatus.isSubmitButtonEnabled ? "" : "disabled"}`}>
+            Reset
+          </button>
+          <button type="submit" disabled={!formStatus.isSubmitButtonEnabled} className={`button ${formStatus.isSubmitButtonEnabled ? "" : "disabled"}`}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </>
   );
