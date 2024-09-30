@@ -3,93 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JavaJam Coffee House - Menu</title>
+        <title>JavaJam Coffee House - Jobs</title>
+        <link rel="stylesheet" href="styles.css">
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 1;
-                background-color: #d2b48c;
-                display: flex;
-                flex-direction: column;
-            }
-            header {
-                background-color: #CAB493;
-                color: #000000;
-                text-align: center;
-                padding: 20px;
-                font-size: 2em;
-            }
-            main {
-                display: flex;
-                flex: 1;
-                max-width: 1200px;
-                margin: 0 auto;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            nav {
-                width: 20%;
-                background-color: #DED1B5;
-                padding: 20px;
-                box-sizing: border-box;
-                text-align:center;
-            }
-            nav a {
-                display: block;
-                color: #8b4513;
-                text-decoration: none;
-                font-weight: bold;
-                font-size: 1.1em;
-            }
-            section {
-                width: 80%;
-                padding: 1%;
-                box-sizing: border-box;
-                background-color: #F5F4DF;
-                display: flex;
-                flex-direction: column;
-            }
-            .content {
-                display: flex;
-                align-items: flex-start;
-            }
-            .text-content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .tab {
-                display:inline-block;
-                margin-left: 40px;
-            }
-            footer {
-                text-align: center;
-                padding: 10px;
-                background-color: #CAB493;
-                color: #000000;
-            }
             table {
-            margin-left: 10%;
-            margin-right: 10%;
-            width: 80%;
+                margin-left: 10%;
+                margin-right: 10%;
+                width: 80%;
+                background-color: transparent; /* Make table background transparent */
             }
             td {
                 padding: 10px;
-                width:auto;
+                width: auto;
                 text-align: left;
             }
             td:nth-child(odd) {
                 text-align: right;
             }
-            button {
-                text-align: left;
-                margin-bottom: 10px;
-                max-width: fit-content;
-            }
-            button[type="reset"] {
-                background-color: #d3d3d3;
-            }
-            </style>
+        </style>
     </head>
     <body>
         <header>
@@ -105,7 +36,7 @@
             <section>
                 <h2>Jobs at JavaJam</h2>
                 <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
-                <form method="POST" action="show_post.php" autocomplete="on">
+                <form id="jobForm" method="POST" action="show_post.php" autocomplete="on">
                     <table>
                         <tr>
                             <td>
@@ -150,7 +81,7 @@
         </footer>
     
         <script>
-            document.getElementById('myForm').addEventListener('submit', function(event) {
+            document.getElementById('jobForm').addEventListener('submit', function(event) {
                 // Get form elements
                 const name = document.getElementById('name').value.trim();
                 const email = document.getElementById('email').value.trim();
@@ -158,38 +89,35 @@
                 const experience = document.getElementById('experience').value.trim();
     
                 // Validate name
-                if (name === '') {
-                    alert('Name is required.');
+                const namePattern = /^[A-Za-z\s]+$/;
+                if (!namePattern.test(name)) {
+                    alert('Name must contain alphabet characters and spaces only.');
                     event.preventDefault();
                     return;
                 }
     
                 // Validate email
-                if (email === '') {
-                    alert('Email is required.');
-                    event.preventDefault();
-                    return;
-                } else if (!validateEmail(email)) {
+                const emailPattern = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,3}$/;
+                if (!emailPattern.test(email)) {
                     alert('Please enter a valid email address.');
                     event.preventDefault();
                     return;
                 }
     
-                // Validate experience
-                if (experience === '') {
-                    alert('Experience is required.');
+                // Validate start date
+                const today = new Date().toISOString().split('T')[0];
+                if (startDate && startDate <= today) {
+                    alert('Start date must be in the future.');
                     event.preventDefault();
                     return;
                 }
     
-                // Additional custom validations can be added here
+                // Validate experience (already required in HTML)
+                if (experience === '') {
+                    alert('Experience is required.');
+                    event.preventDefault();
+                }
             });
-    
-            // Email validation function
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
         </script>
     </body>
-    </html>
+</html>

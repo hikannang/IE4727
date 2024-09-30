@@ -1,92 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaJam Coffee House - Jobs </title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header>
-    <h1>JavaJam Coffee House</h1>
-</header>
-<div id="flex-container">
-    <div id ="navbar"><nav>
-        <ul>
-            <li><a href="index.html" class="navButton"><b>Home</b></a> &nbsp;</li>
-            <br>
-            <li><a href="menu.html" class="navButton"><b>Menu</b></a> &nbsp;</li>
-            <br>
-            <li><a href="Music.html" class="navButton"><b>Music</b></a> &nbsp;</li>
-            <br>
-            <li><a href="jobs.html" class="navButton"><b>Jobs</b></a></li>
-        </ul>
-    </nav></div>
-    <div id="content">
-        <div id="subtitle">
-            <h2>Jobs at JavaJam</h2>
-        </div>
-        <p id="musicdesc">
-            Want to work at javaJam? Fill out the form below to start your application. Required fields are marked with an asterisk (*).
-        </p>
-        <div id="application">
-        <form method="POST" action="show_post.php" autocomplete="on">
-            <table>
-                <tr>
-                    <td class="label"><label for="myName">*Name:</label></td>
-                    <td class="boxes"><input type="text" id="myName" name="myName" 
-                        placeholder="Enter your name here" pattern="[A-Za-z\s]+" required></td>
-                </tr>
-                <tr>
-                    <td class="label"><label for="myEmail">*E-mail:</label></td>
-                    <td class="boxes"><input type="email" id="myEmail" name="myEmail"
-                         placeholder="Enter your Email-ID here" pattern="^[A-Za-z0-9.-]+@[A-Za-z].[A-za-z]{2,3}" required></td>
-                </tr>
-                <tr>
-                    <td class="label"><label for="startdate">Start Date:</label></td>
-                    <td class="boxes"><input type="date" id="startdate" name="startdate"
-                         placeholder="dd/mm/yyyy"></td>
-                </tr>
-                <tr>
-                    <td class="label"><label for="myExperience">*Experience:</label></td>
-                    <td class="boxes"><textarea id="myExperience" name="myExperience"
-                         placeholder="Enter your expereince here" required rows="4" cols="40"></textarea></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="buttons">
-                      <input type="reset" value="Clear">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="buttons">
-                      <input type="submit" value="Apply Now">
-                    </td>
-                </tr>
-            </table>
-        </form>
-        </div>
-    </div>
-    </div>
-<footer>
-    <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
-    <br><a href="poon@qichuan.com"><i>poon@qichuan.com</i></a>
-</footer>
-
-<script>
-    // JavaScript to validate the start date
-    document.getElementById("startdate").addEventListener("change", function() {
-    var inputDate = new Date(this.value);
-    var today = new Date();
-    console.log(today);
+<!doctype html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaJam Coffee House - Jobs</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            table {
+                margin-left: 10%;
+                margin-right: 10%;
+                width: 80%;
+                background-color: transparent; /* Make table background transparent */
+            }
+            td {
+                padding: 10px;
+                width: auto;
+                text-align: left;
+            }
+            td:nth-child(odd) {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            JavaJam Coffee House
+        </header>
+        <main>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="music.html">Music</a>
+                <a href="jobs.html">Jobs</a>
+            </nav>
+            <section>
+                <h2>Jobs at JavaJam</h2>
+                <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
+                <form id="jobForm" method="POST" action="show_post.php" autocomplete="on">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="name">*Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="name" name="name" placeholder="Enter your name here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">*Email:</label>
+                            </td>
+                            <td>
+                                <input type="email" id="email" name="email" placeholder="Enter your Email-ID here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="startdate">Start Date:</label>
+                            </td>
+                            <td>
+                                <input type="date" id="startdate" name="startdate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="experience">Experience:</label>
+                            </td>
+                            <td>
+                                <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+            hongwei@leong.com</i></small>
+        </footer>
     
-    // Set time to 23:59:59:999 for comparison purposes
-    today.setHours(23, 59, 59, 999);
+        <script>
+            document.getElementById('jobForm').addEventListener('submit', function(event) {
+                // Get form elements
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const startDate = document.getElementById('startdate').value;
+                const experience = document.getElementById('experience').value.trim();
     
-    if (inputDate <= today) {
-        alert("The start date cannot be today or in the past. Please choose a future date.");
-        this.value = ""; // Clear the input
-    }
-});
-</script>
-</body>
+                // Validate name
+                const namePattern = /^[A-Za-z\s]+$/;
+                if (!namePattern.test(name)) {
+                    alert('Name must contain alphabet characters and spaces only.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate email
+                const emailPattern = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,3}$/;
+                if (!emailPattern.test(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate start date
+                const today = new Date().toISOString().split('T')[0];
+                if (startDate && startDate <= today) {
+                    alert('Start date must be in the future.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate experience (already required in HTML)
+                if (experience === '') {
+                    alert('Experience is required.');
+                    event.preventDefault();
+                }
+            });
+        </script>
+    </body>
 </html>
