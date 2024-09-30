@@ -105,51 +105,91 @@
             <section>
                 <h2>Jobs at JavaJam</h2>
                 <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
-                <form action="show_post.php" method="post"></form>
-                <table>
-                    <tr>
-                        <td>
-                            <label for "name">*Name:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="name" name="name" placeholder="Enter your name here" required>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for "email">*Email:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="name" name="name" placeholder="Enter your Email-ID here" required>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for "startdate">Start Date:</label>
-                        </td>
-                        <td>
-                            <input type="date" id="startdate" name="startdate">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for "experience">Experience:</label>
-                        </td>
-                        <td>
-                            <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
-                        </td>
-                    </tr>
-                </table>
-                
-                <button type="reset">Clear</button>
-                <button type="submit">Apply Now</button>
-        </section>
-    </main>
-    <footer>
-            <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
-            <small><i><a href="mailto:hongwei@leong.com"><br>hongwei@leong.com</a></i></small>
+                <form method="POST" action="show_post.php" autocomplete="on">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="name">*Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="name" name="name" placeholder="Enter your name here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">*Email:</label>
+                            </td>
+                            <td>
+                                <input type="email" id="email" name="email" placeholder="Enter your Email-ID here" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="startdate">Start Date:</label>
+                            </td>
+                            <td>
+                                <input type="date" id="startdate" name="startdate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="experience">Experience:</label>
+                            </td>
+                            <td>
+                                <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+            hongwei@leong.com</i></small>
         </footer>
+    
+        <script>
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+                // Get form elements
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const startDate = document.getElementById('startdate').value;
+                const experience = document.getElementById('experience').value.trim();
+    
+                // Validate name
+                if (name === '') {
+                    alert('Name is required.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate email
+                if (email === '') {
+                    alert('Email is required.');
+                    event.preventDefault();
+                    return;
+                } else if (!validateEmail(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Validate experience
+                if (experience === '') {
+                    alert('Experience is required.');
+                    event.preventDefault();
+                    return;
+                }
+    
+                // Additional custom validations can be added here
+            });
+    
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+        </script>
     </body>
-</html>
+    </html>

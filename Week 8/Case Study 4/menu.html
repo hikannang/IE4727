@@ -99,19 +99,60 @@
             <h2>Coffee at JavaJam</h2>
             <table>
                 <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+                <tr>
                     <td><strong>Just Java</strong></td>
-                    <td>Regular house blend, decaffeinated coffee, or flavor of the day.<br>
-                    <strong>Endless Cup $2.00</strong></td>
+                    <td>
+                        Regular house blend, decaffeinated coffee, or flavor of the day.<br><br>
+                        <b>
+                            <input type="checkbox" id="javaPrice" class="price" name="java" value="2" checked>
+                            Endless Cup $2.00
+                        </b>
+                    </td>
+                    <td>
+                        <input type="number" class="quantity" name="quantity_java" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
+                    </td>
+                    <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
                 <tr>
                     <td><strong>Cafe au Lait</strong></td>
-                    <td>House blended coffee infused into a smooth, steamed milk.<br>
-                    <strong>Single $2.00 Double $3.00</strong></td>
+                    <td>
+                        House blended coffee infused into a smooth, steamed milk.<br><br>
+                        <b>
+                            <input type="radio" class="price" name="cafe" value="2" checked>
+                            Single $2.00
+                        </b><br>
+                        <b>
+                            <input type="radio" class="price" name="cafe" value="3">
+                            Double $3.00
+                        </b>
+                    </td>
+                    <td>
+                        <input type="number" class="quantity" name="quantity_cafe" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
+                    </td>
+                    <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
                 <tr>
-                    <td><strong>Iced Capppacino</strong></td>
-                    <td>Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br>
-                    <strong>Single $4.75 Double $5.75</strong></td>
+                    <td><strong>Iced Cappuccino</strong></td>
+                    <td>
+                        Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br><br>
+                        <b>
+                            <input type="radio" class="price" name="iced" value="4.75" checked>
+                            Single $4.75
+                        </b><br>
+                        <b>
+                            <input type="radio" class="price" name="iced" value="5.75">
+                            Double $5.75
+                        </b>
+                    </td>
+                    <td>
+                        <input type="number" class="quantity" name="quantity_iced" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
+                    </td>
+                    <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
             </table>
         </section>
@@ -120,5 +161,25 @@
         <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
         hongwei@leong.com</i></small>
     </footer>
+    <script>
+        function calculateSubtotal() {
+            // Get all rows in the table
+            const rows = document.querySelectorAll('table tr');
+    
+            // Loop through each row to calculate subtotal
+            rows.forEach(row => {
+                const priceElement = row.querySelector('input[type="checkbox"]:checked, input[type="radio"]:checked');
+                const quantityElement = row.querySelector('input[type="number"]');
+                const subtotalElement = row.querySelector('.subtotal');
+    
+                if (priceElement && quantityElement && subtotalElement) {
+                    const price = parseFloat(priceElement.value);
+                    const quantity = parseInt(quantityElement.value) || 0;
+                    const subtotal = price * quantity;
+                    subtotalElement.textContent = subtotal.toFixed(2);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
