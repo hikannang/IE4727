@@ -1,0 +1,246 @@
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-width: 800px;
+    background-color: #F5F5DD;
+}
+
+/* body div{
+    border: 2px solid red;
+} */
+
+header{
+    background-color: #D1B38D;
+    padding-top: 1px;
+    height:20vh;
+}
+
+h1{
+    color: #91643D;
+    text-shadow: 2px 2px 2px black;
+    -webkit-text-stroke: 0.2px black;
+    font-family: "MV Boli", Times, serif;
+    font-size: 70px;
+}
+
+nav{
+    text-align: center;
+}
+
+nav ul{
+    list-style-type: none;
+    padding: 3px;
+    text-align: center;
+}
+
+nav ul li{
+    padding: 5px;
+    /* border: 2px solid red; */
+}
+
+nav ul li a{
+    color: #886E60;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+nav ul li :hover{
+    background-color: #F5F5DD;
+}
+
+#flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+}
+
+#navbar{
+    font-size: 20px;
+    width:15%;
+    height: 100%;
+    background-color: #E2D1B3;
+}
+
+#content{
+    height: 100%;
+    flex:1;
+}
+
+#winding_road{
+    padding-left: 10vh;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#subtitle{
+    padding-left: 10vh;
+}
+
+#subtitle h2{
+    color: #441613;
+    text-align: left;
+    font-weight: bold;
+    font-family: "MV Boli", Times, serif;
+    font-size: 30px;
+}
+
+#winding_road h2{
+    color: #441613;
+    text-align: left;
+    font-weight: bold;
+    font-family: "MV Boli", Times, serif;
+    font-size: 35px;
+}
+
+#homepicandlocation{
+    display: flex;
+}
+
+#homepic{
+    padding: 30px;
+    flex: 1.5;
+}
+
+#location{
+    color: #441613;
+    font-size: 30px;
+    padding: 40px;
+    text-align: left;
+    flex: 2;
+}
+
+#location ul{
+    list-style-image: url('media/bullet.png');
+    color: #441613;
+}
+
+#musicdesc{
+    color: #441613;
+    text-align: left;
+    font-weight: 50px;
+    font-family: "MV Boli", Times, serif;
+    font-size: 20px;
+    padding-left: 10vh;
+}
+
+#menu_table{
+    display: flex;
+    justify-content: center;
+}
+#menu_table table{
+    border: 1px solid white;
+    margin: auto;
+    width: 65vw;
+    height:40vh;
+    border-spacing: 0;
+}
+#menu_table th{
+    color: #441613;
+}
+#menu_table table td{
+    border: 1px solid white;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#menu_table td{
+    color: #441613;
+    padding:20px;
+    border-style: none;
+}
+#menu_table tr:nth-of-type(even){
+    background-color: #eaeaea;
+}
+#menu_table tr:nth-of-type(odd){
+    background-color: #D1B38D;
+    color:#eaeaea;
+}
+.itemdesc{
+    text-align: left;
+}
+.st{
+    width: 5vw;
+}
+#gt{
+    text-align: right;
+}
+#javaPrice{
+    display: none;
+}
+
+#music_table{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+#music_table table{
+    margin: auto;
+    width: 60vw;
+    height:40vh;
+    border-spacing: 0;
+}
+#music_table table td{
+    font-family: 'Times New Roman', Times, serif;
+}
+#music_table td{
+    color: #441613;
+    border-style: none;
+}
+#music_table tr:nth-of-type(even){
+    background-color: #eaeaea;
+}
+#music_table tr:nth-of-type(odd){
+    background-color: #D1B38D;
+    color:#eaeaea;
+}
+.sample{
+    padding: 20px;
+    width: 50vw;
+}
+.month{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+img{
+    border-radius: 10px;
+}
+
+#application{
+    padding-left: 100px;
+    display: flex;
+    justify-content: left;
+}
+
+#application form tr td{
+    padding: 10px;
+}
+.label{
+    text-align: right;
+}
+.boxes{
+    text-align: left;
+}
+.buttons{
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+}
+/* table tr td{
+    border: 2px solid red;
+} */
+footer{
+    /* position: absolute;
+    bottom: 0; */
+    width: 100vw;
+    height:7vh;
+    background-color: #D1B38D;
+    padding-top: 30px;
+    z-index: -1;
+}

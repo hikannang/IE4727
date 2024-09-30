@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Menu with Subtotal</title>
+</head>
+<body>
+    <h2>Ordering Menu</h2>
+    <table border="1">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Item 1</td>
+            <td>$10.00</td>
+            <td><input type="number" class="quantity" data-price="10" value="0" min="0"></td>
+        </tr>
+        <tr>
+            <td>Item 2</td>
+            <td>$15.00</td>
+            <td><input type="number" class="quantity" data-price="15" value="0" min="0"></td>
+        </tr>
+        <tr>
+            <td>Item 3</td>
+            <td>$20.00</td>
+            <td><input type="number" class="quantity" data-price="20" value="0" min="0"></td>
+        </tr>
+    </table>
+    <br>
+    <h3>Subtotal: $<span id="subtotal">0.00</span></h3>
+
+    <script src="subtotal.js"></script>
+</body>
+</html>

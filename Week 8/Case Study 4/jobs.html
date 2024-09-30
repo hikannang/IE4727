@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaJam Coffee House - Menu</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 1;
+                background-color: #d2b48c;
+                display: flex;
+                flex-direction: column;
+            }
+            header {
+                background-color: #CAB493;
+                color: #000000;
+                text-align: center;
+                padding: 20px;
+                font-size: 2em;
+            }
+            main {
+                display: flex;
+                flex: 1;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            nav {
+                width: 20%;
+                background-color: #DED1B5;
+                padding: 20px;
+                box-sizing: border-box;
+                text-align:center;
+            }
+            nav a {
+                display: block;
+                color: #8b4513;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+            section {
+                width: 80%;
+                padding: 1%;
+                box-sizing: border-box;
+                background-color: #F5F4DF;
+                display: flex;
+                flex-direction: column;
+            }
+            .content {
+                display: flex;
+                align-items: flex-start;
+            }
+            .text-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .tab {
+                display:inline-block;
+                margin-left: 40px;
+            }
+            footer {
+                text-align: center;
+                padding: 10px;
+                background-color: #CAB493;
+                color: #000000;
+            }
+            table {
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 80%;
+            }
+            td {
+                padding: 10px;
+                width:auto;
+                text-align: left;
+            }
+            td:nth-child(odd) {
+                text-align: right;
+            }
+            button {
+                text-align: left;
+                margin-bottom: 10px;
+                max-width: fit-content;
+            }
+            button[type="reset"] {
+                background-color: #d3d3d3;
+            }
+            </style>
+    </head>
+    <body>
+        <header>
+            JavaJam Coffee House
+        </header>
+        <main>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="music.html">Music</a>
+                <a href="jobs.html">Jobs</a>
+            </nav>
+            <section>
+                <h2>Jobs at JavaJam</h2>
+                <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
+                <form action="show_post.php" method="post"></form>
+                <table>
+                    <tr>
+                        <td>
+                            <label for "name">*Name:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="name" name="name" placeholder="Enter your name here" required>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for "email">*Email:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="name" name="name" placeholder="Enter your Email-ID here" required>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for "startdate">Start Date:</label>
+                        </td>
+                        <td>
+                            <input type="date" id="startdate" name="startdate">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for "experience">Experience:</label>
+                        </td>
+                        <td>
+                            <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
+                        </td>
+                    </tr>
+                </table>
+                
+                <button type="reset">Clear</button>
+                <button type="submit">Apply Now</button>
+        </section>
+    </main>
+    <footer>
+            <small><i>Copyright &copy; 2014 JavaJam Coffee House</i></small>
+            <small><i><a href="mailto:hongwei@leong.com"><br>hongwei@leong.com</a></i></small>
+        </footer>
+    </body>
+</html>
