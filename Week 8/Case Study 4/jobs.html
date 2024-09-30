@@ -1,123 +1,138 @@
 <!doctype html>
-<html lang ="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JavaJam Coffee House - Jobs</title>
-        <link rel="stylesheet" href="styles.css">
-        <style>
-            table {
-                margin-left: 10%;
-                margin-right: 10%;
-                width: 80%;
-                background-color: transparent; /* Make table background transparent */
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House - Jobs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       table td {
+        background-color: transparent !important;
+       } 
+    </style>
+</head>
+<body>
+    <header>
+        JavaJam Coffee House
+    </header>
+    <main>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="music.html">Music</a>
+            <a href="jobs.html">Jobs</a>
+        </nav>
+        <section>
+            <h2>Jobs at JavaJam</h2>
+            <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
+            <form id="jobForm" method="POST" action="show_post.php" autocomplete="on">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">*Name:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="name" name="name" placeholder="Enter your name here" required>
+                            <div id="nameError" class="error"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">*Email:</label>
+                        </td>
+                        <td>
+                            <input type="email" id="email" name="email" placeholder="Enter your Email-ID here" required>
+                            <div id="emailError" class="error"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="startdate">Start Date:</label>
+                        </td>
+                        <td>
+                            <input type="date" id="startdate" name="startdate">
+                            <div id="startDateError" class="error"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="experience">Experience:</label>
+                        </td>
+                        <td>
+                            <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
+                            <div id="experienceError" class="error"></div>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">Submit</button>
+                <button type="reset" onclick="clearErrors()">Clear</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+        hongwei@leong.com</i></small>
+    </footer>
+
+    <script>
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const startDateInput = document.getElementById('startdate');
+        const experienceInput = document.getElementById('experience');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const startDateError = document.getElementById('startDateError');
+        const experienceError = document.getElementById('experienceError');
+
+        nameInput.addEventListener('input', function() {
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(nameInput.value)) {
+                nameError.textContent = 'Name must contain alphabet characters and spaces only.';
+            } else {
+                nameError.textContent = '';
             }
-            td {
-                padding: 10px;
-                width: auto;
-                text-align: left;
+        });
+
+        emailInput.addEventListener('input', function() {
+            const emailPattern = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,3}$/;
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+            } else {
+                emailError.textContent = '';
             }
-            td:nth-child(odd) {
-                text-align: right;
+        });
+
+        startDateInput.addEventListener('change', function() {
+            const today = new Date().toISOString().split('T')[0];
+            if (startDateInput.value <= today) {
+                startDateError.textContent = 'Start date must be in the future.';
+            } else {
+                startDateError.textContent = '';
             }
-        </style>
-    </head>
-    <body>
-        <header>
-            JavaJam Coffee House
-        </header>
-        <main>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="menu.html">Menu</a>
-                <a href="music.html">Music</a>
-                <a href="jobs.html">Jobs</a>
-            </nav>
-            <section>
-                <h2>Jobs at JavaJam</h2>
-                <p>Want to work at JavaJam? Fill out the form below to start your application. Required Fields are marked with an asterisk *</p>
-                <form id="jobForm" method="POST" action="show_post.php" autocomplete="on">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="name">*Name:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="name" name="name" placeholder="Enter your name here" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="email">*Email:</label>
-                            </td>
-                            <td>
-                                <input type="email" id="email" name="email" placeholder="Enter your Email-ID here" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="startdate">Start Date:</label>
-                            </td>
-                            <td>
-                                <input type="date" id="startdate" name="startdate">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="experience">Experience:</label>
-                            </td>
-                            <td>
-                                <textarea id="experience" name="experience" rows="4" placeholder="Enter your past experience here" required></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                    <button type="submit">Submit</button>
-                </form>
-            </section>
-        </main>
-        <footer>
-            <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
-            hongwei@leong.com</i></small>
-        </footer>
-    
-        <script>
-            document.getElementById('jobForm').addEventListener('submit', function(event) {
-                // Get form elements
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const startDate = document.getElementById('startdate').value;
-                const experience = document.getElementById('experience').value.trim();
-    
-                // Validate name
-                const namePattern = /^[A-Za-z\s]+$/;
-                if (!namePattern.test(name)) {
-                    alert('Name must contain alphabet characters and spaces only.');
-                    event.preventDefault();
-                    return;
-                }
-    
-                // Validate email
-                const emailPattern = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,3}$/;
-                if (!emailPattern.test(email)) {
-                    alert('Please enter a valid email address.');
-                    event.preventDefault();
-                    return;
-                }
-    
-                // Validate start date
-                const today = new Date().toISOString().split('T')[0];
-                if (startDate && startDate <= today) {
-                    alert('Start date must be in the future.');
-                    event.preventDefault();
-                    return;
-                }
-    
-                // Validate experience (already required in HTML)
-                if (experience === '') {
-                    alert('Experience is required.');
-                    event.preventDefault();
-                }
-            });
-        </script>
-    </body>
+        });
+
+        experienceInput.addEventListener('input', function() {
+            if (experienceInput.value.trim() === '') {
+                experienceError.textContent = 'Experience is required.';
+            } else {
+                experienceError.textContent = '';
+            }
+        });
+
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+            if (nameError.textContent || emailError.textContent || startDateError.textContent || experienceError.textContent) {
+                event.preventDefault(); // Prevent form submission if there are errors
+            }
+        });
+
+        function clearErrors() {
+            // Clear all error messages
+            nameError.textContent = '';
+            emailError.textContent = '';
+            startDateError.textContent = '';
+            experienceError.textContent = '';
+        }
+    </script>
+</body>
 </html>
