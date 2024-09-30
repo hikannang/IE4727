@@ -30,9 +30,13 @@ function App() {
       ...prevErrors,
       username: updatedData.username ? null : "Name is required",
       email: updatedData.email
-        ? !/\S+@\S+\.\S+/.test(updatedData.email)
-          ? "Email is not valid"
-          : null
+      ? !updatedData.email.includes('@')
+        ? "Email is missing a @ symbol"
+      :!updatedData.email.includes(".com")
+        ?  "Email domain is invalid"
+      : !/\S+@\S+\.\S+/.test(updatedData.email)
+        ? "Email is not valid"
+      : null
         : "Email is required",
       password: updatedData.password
         ? !passwordLength
@@ -103,7 +107,7 @@ function App() {
         <input
           name="username"
           type="text"
-          placeholder="username"
+          placeholder="Username"
           value={formData.username}
           onChange={handleChange}
           required={true}
