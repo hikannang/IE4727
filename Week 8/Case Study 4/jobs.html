@@ -95,13 +95,14 @@
         });
 
         emailInput.addEventListener('input', function() {
-            const emailPattern = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,3}$/;
+            const emailPattern = /^[\w.-]+@(yahoo\.com|gmail\.com|e\.ntu\.edu\.sg|hotmail\.com)$/;
             if (!emailPattern.test(emailInput.value)) {
-                emailError.textContent = 'Please enter a valid email address.';
+                emailError.textContent = 'Please enter a valid email address from yahoo.com, gmail.com, e.ntu.edu.sg, or hotmail.com.';
             } else {
                 emailError.textContent = '';
             }
         });
+
 
         startDateInput.addEventListener('change', function() {
             const today = new Date().toISOString().split('T')[0];

@@ -29,11 +29,14 @@
                 <tr>
                     <td><strong>Just Java</strong></td>
                     <td>
-                        Regular house blend, decaffeinated coffee, or flavor of the day.
+                        Regular house blend, decaffeinated coffee, or flavor of the day.<br><br>
+                        <b>
+                            <input type="radio" id="javaPrice" class="price" name="java" value="2" checked>
+                            Endless Cup $2.00
+                        </b>
                     </td>
                     <td>
-                        <b>Endless Cup $2.00</b><br>
-                        <input type="number" class="quantity" name="quantity_java" min="0" max="999" placeholder="qty" data-price="2" oninput="calculateSubtotal()">
+                        <input type="number" class="quantity" name="quantity_java" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
                     </td>
                     <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
@@ -41,12 +44,17 @@
                     <td><strong>Cafe au Lait</strong></td>
                     <td>
                         House blended coffee infused into a smooth, steamed milk.<br><br>
+                        <b>
+                            <input type="radio" class="price" name="cafe" value="2" checked>
+                            Single $2.00
+                        </b><br>
+                        <b>
+                            <input type="radio" class="price" name="cafe" value="3">
+                            Double $3.00
+                        </b>
                     </td>
                     <td>
-                        <b>Single $2.00</b>
-                        <input type="number" class="quantity" name="quantity_cafe_single" min="0" max="999" placeholder="qty" data-price="2" oninput="calculateSubtotal()"><br><br>
-                        <b>Double $3.00</b>
-                        <input type="number" class="quantity" name="quantity_cafe_double" min="0" max="999" placeholder="qty" data-price="3" oninput="calculateSubtotal()">
+                        <input type="number" class="quantity" name="quantity_cafe" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
                     </td>
                     <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
@@ -54,17 +62,22 @@
                     <td><strong>Iced Cappuccino</strong></td>
                     <td>
                         Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br><br>
+                        <b>
+                            <input type="radio" class="price" name="iced" value="4.75" checked>
+                            Single $4.75
+                        </b><br>
+                        <b>
+                            <input type="radio" class="price" name="iced" value="5.75">
+                            Double $5.75
+                        </b>
                     </td>
                     <td>
-                        <b>Single $4.75</b>
-                        <input type="number" class="quantity" name="quantity_iced_single" min="0" max="999" placeholder="qty" data-price="4.75" oninput="calculateSubtotal()"><br><br>
-                        <b>Double $5.75</b>
-                        <input type="number" class="quantity" name="quantity_iced_double" min="0" max="999" placeholder="qty" data-price="5.75" oninput="calculateSubtotal()">
+                        <input type="number" class="quantity" name="quantity_iced" min="0" max="999" placeholder="qty" oninput="calculateSubtotal()">
                     </td>
                     <td class="st">$<span class="subtotal">0.00</span></td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="text-align: right;"><strong>Grand Total:</strong></td>
+                    <td colspan="3" style="text-align: right;"><strong>Grand Total</strong></td>
                     <td class="st">$<span id="grandTotal">0.00</span></td>
                 </tr>
             </table>
@@ -74,33 +87,35 @@
         <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
         hongwei@leong.com</i></small>
     </footer>
-
     <script>
         function calculateSubtotal() {
             // Get all rows in the table
             const rows = document.querySelectorAll('table tr');
+
             let grandTotal = 0;
 
+            // Loop through each row to calculate subtotal
             rows.forEach(row => {
-                const quantityElements = row.querySelectorAll('input[type="number"]');
+                const priceElement = row.querySelector('input[type="radio"]:checked');
+                const quantityElement = row.querySelector('input[type="number"]');
                 const subtotalElement = row.querySelector('.subtotal');
-                let subtotal = 0;
 
-                quantityElements.forEach(quantityElement => {
-                    const price = parseFloat(quantityElement.getAttribute('data-price'));
+                if (priceElement && quantityElement && subtotalElement) {
+                    const price = parseFloat(priceElement.value);
                     const quantity = parseInt(quantityElement.value) || 0;
-                    subtotal += price * quantity;
-                });
-
-                if (subtotalElement) {
+                    const subtotal = price * quantity;
                     subtotalElement.textContent = subtotal.toFixed(2);
-                    grandTotal += subtotal;
+                    grandTotal += subtotal; // Add to grand total
                 }
             });
 
-            // Update the grand total
-            document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+            // Update the grand total display
+            const grandTotalElement = document.getElementById('grandTotal');
+            if (grandTotalElement) {
+                grandTotalElement.textContent = grandTotal.toFixed(2);
+            }
         }
+
     </script>
 </body>
 </html>
