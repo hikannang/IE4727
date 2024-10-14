@@ -95,7 +95,7 @@
         });
 
         emailInput.addEventListener('input', function() {
-            const emailPattern = /^[\w.-]+@(yahoo\.com|gmail\.com|e\.ntu\.edu\.sg|hotmail\.com)$/;
+            const emailPattern = /^[\w.-]+@(yahoo\.com|gmail\.com|e\.ntu\.edu\.sg|hotmail\.com|nus\.edu\.sg)$/;
             if (!emailPattern.test(emailInput.value)) {
                 emailError.textContent = 'Please enter a valid email address from yahoo.com, gmail.com, e.ntu.edu.sg, or hotmail.com.';
             } else {
