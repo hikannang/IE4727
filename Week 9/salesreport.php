@@ -24,7 +24,8 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 JavaJam Coffee House</p>
-    </footer>
+    <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+    hongwei@leong.com</i></small>
+</footer>
 </body>
 </html>
