@@ -38,8 +38,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
 
         case 'submit_order':
-            // Implement order submission logic here
-            $message = "Order submitted successfully.";
+            if (isset($_POST['product_ids']) && isset($_POST['quantity'])) {
+                $orderSuccess = true;
+
+                foreach ($_POST['product_ids'] as $id) {
+                    $quantity = $_POST['quantity'][$id];
+
+                    if ($quantity > 0) {
+                        $sql = "SELECT price FROM products WHERE id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("i", $id);
+                        $stmt->execute();
+                        $stmt->bind_result($price);
+                        $stmt->fetch();
+                        $stmt->close();
+
+                        $totalPrice = $price * $quantity;
+                        $sql = "INSERT INTO orders (product_id, quantity, total_price, order_date) VALUES (?, ?, ?, NOW())";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("iid", $id, $quantity, $totalPrice);
+                        if (!$stmt->execute()) {
+                            $orderSuccess = false;
+                        }
+                        $stmt->close();
+                    }
+                }
+
+                $message = $orderSuccess ? "Order submitted successfully." : "Failed to submit order.";
+            } else {
+                $message = "Please select products and provide quantities.";
+            }
             break;
 
         case 'generate_report':
