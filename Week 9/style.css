@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #d2b48c; /* Tan background to give a warm, cozy feel */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #CAB493; /* Light brown, coffee-themed */
+    color: #000000;
+    text-align: center;
+    padding: 20px;
+    font-size: 2em;
+}
+
+footer {
+    text-align: center;
+    background-color: #CAB493; /* Match header for consistency */
+    color: #000000; /* Ensure text is readable */
+    font-size: 0.9em; /* Slightly smaller font for footer */
+    border-top: 1px solid #ddd; /* Optional: add a border for separation */
+}
+
+main {
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 20%;
+    background-color: #DED1B5; /* Lighter brown to differentiate from the header */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+nav a {
+    display: block;
+    color: #8b4513; /* Dark brown for text */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline; /* Adds underline effect on hover */
+}
+
+section {
+    width: 90%;
+    padding: 1%;
+    box-sizing: border-box;
+    background-color: #F5F4DF; /* Light cream background for content */
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2 {
+    color: #8b4513; /* Consistent dark brown for titles */
+    margin: 20px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+table {
+    margin: 20px auto;
+    width: 90%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f5deb3; /* Light wheat color for even rows */
+}
+
+tr:nth-child(odd) {
+    background-color: #d2b48c; /* Tan color for odd rows */
+}
+
+button {
+    background-color: #8b4513; /* Dark brown for buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #5a2f1f; /* Darker shade for hover state */
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 60px; /* Smaller width for input boxes */
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+input[type="text"]:disabled, input[type="number"]:disabled {
+    background-color: #e0e0e0; /* Light gray background */
+    color: #a0a0a0; /* Gray text color */
+    border: 1px solid #ccc; /* Light gray border */
+    cursor: not-allowed; /* Cursor indicating non-interactivity */
+}
+
+.message {
+    color: #8b4513;
+    text-align: center;
+    margin: 20px;
+    font-size: 1.2em;
+}

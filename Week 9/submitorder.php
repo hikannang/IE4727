@@ -1,47 +1,53 @@
 <?php
 // Database connection
 $servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default XAMPP password
+$username = "root";
+$password = "";
 $dbname = "javajam";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$message = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['product_ids']) && isset($_POST['quantity'])) {
-        $orderSuccess = true;
+    if (isset($_POST['product_ids']) && isset($_POST['quantity']) && isset($_POST['current_price'])) {
+        $product_ids = [];
+        $orderDetails = [];
+        $grandTotal = 0.0;
 
         foreach ($_POST['product_ids'] as $id) {
-            $quantity = $_POST['quantity'][$id];
-
-            // Fetch product price
-            $sql = "SELECT price FROM products WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->bind_result($price);
-            $stmt->fetch();
-            $stmt->close();
-
+            $quantity = intval($_POST['quantity'][$id]); // Convert to integer to remove leading zeros
+            $currentPrice = $_POST['current_price'][$id];
             if ($quantity > 0) {
-                $totalPrice = $price * $quantity;
-                $sql = "INSERT INTO orders (product_id, quantity, total_price, order_date) VALUES (?, ?, ?, NOW())";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("iid", $id, $quantity, $totalPrice);
-                if (!$stmt->execute()) {
-                    $orderSuccess = false;
-                }
-                $stmt->close();
+                $subtotal = $quantity * $currentPrice;
+                $grandTotal += $subtotal;
+                $orderDetails[] = [
+                    'id' => $id,
+                    'quantity' => $quantity,
+                    'price_per_cup' => $currentPrice,
+                    'subtotal' => $subtotal
+                ];
             }
         }
+        
 
-        $message = $orderSuccess ? "Order submitted successfully." : "Failed to submit order.";
+        if (!empty($orderDetails)) {
+            $orderDetailsJson = json_encode($orderDetails);
+            $stmt = $conn->prepare("INSERT INTO orders (order_date, order_details, grand_total) VALUES (NOW(), ?, ?)");
+            $stmt->bind_param("sd", $orderDetailsJson, $grandTotal);
+            if ($stmt->execute()) {
+                $message = "Order submitted successfully.";
+            } else {
+                $message = "Failed to submit order.";
+            }
+            $stmt->close();
+        } else {
+            $message = "No products selected.";
+        }
     } else {
         $message = "Please select products and provide quantities.";
     }
@@ -52,3 +58,4 @@ $conn->close();
 // Redirect back to menu.php with a message
 header("Location: menu.php?message=" . urlencode($message));
 exit();
+?>

@@ -15,74 +15,38 @@ if ($conn->connect_error) {
 
 $message = "";
 
+// Process POST request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $action = $_POST['action'];
+    if (isset($_POST['product_ids']) && isset($_POST['new_price'])) {
+        $success = false; // Flag to check if any price was updated successfully
+        foreach ($_POST['product_ids'] as $product_id) {
+            $new_price = $_POST['new_price'][$product_id];
+            if (is_numeric($new_price) && $new_price > 0) {
+                $stmt = $conn->prepare("UPDATE products SET price = ? WHERE id = ?");
+                $stmt->bind_param("di", $new_price, $product_id);
 
-    switch ($action) {
-        case 'update_prices':
-            if (isset($_POST['product_ids']) && isset($_POST['new_price'])) {
-                foreach ($_POST['product_ids'] as $id) {
-                    $newPrice = $_POST['new_price'][$id];
-                    if (is_numeric($newPrice) && $newPrice > 0) {
-                        $sql = "UPDATE products SET price = ? WHERE id = ?";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("di", $newPrice, $id);
-                        $stmt->execute();
-                        $stmt->close();
-                    }
-                }
-                $message = "Prices updated successfully.";
-            } else {
-                $message = "No products selected or invalid price.";
-            }
-            break;
-
-        case 'submit_order':
-            if (isset($_POST['product_ids']) && isset($_POST['quantity'])) {
-                $orderSuccess = true;
-
-                foreach ($_POST['product_ids'] as $id) {
-                    $quantity = $_POST['quantity'][$id];
-
-                    if ($quantity > 0) {
-                        $sql = "SELECT price FROM products WHERE id = ?";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("i", $id);
-                        $stmt->execute();
-                        $stmt->bind_result($price);
-                        $stmt->fetch();
-                        $stmt->close();
-
-                        $totalPrice = $price * $quantity;
-                        $sql = "INSERT INTO orders (product_id, quantity, total_price, order_date) VALUES (?, ?, ?, NOW())";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("iid", $id, $quantity, $totalPrice);
-                        if (!$stmt->execute()) {
-                            $orderSuccess = false;
-                        }
-                        $stmt->close();
-                    }
+                if ($stmt->execute()) {
+                    $success = true; // Set flag to true if at least one update is successful
+                } else {
+                    $message .= "Error updating price for Product ID: $product_id. ";
                 }
 
-                $message = $orderSuccess ? "Order submitted successfully." : "Failed to submit order.";
+                $stmt->close();
             } else {
-                $message = "Please select products and provide quantities.";
+                $message .= "Invalid price entered for Product ID: $product_id. ";
             }
-            break;
-
-        case 'generate_report':
-            // Implement report generation logic here
-            $message = "Report generated successfully.";
-            break;
-
-        default:
-            $message = "Invalid action.";
-            break;
+        }
+        if ($success) {
+            $message .= "Price updated successfully.";
+        }
+    } else {
+        $message = "Product IDs and new prices are required.";
     }
 }
 
 $conn->close();
 
-// Redirect back to menu.php with a message
+// Redirect back to menu with a message
 header("Location: menu.php?message=" . urlencode($message));
 exit();
+?>
