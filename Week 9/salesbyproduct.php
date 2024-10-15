@@ -18,8 +18,15 @@ $salesData = [
     "Iced Cappuccino" => 0
 ];
 
-// Fetch orders
+// Initialize date filter variable
+$dateFilter = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
+
+// Build SQL query with date filter
 $sql = "SELECT order_details FROM orders";
+if ($dateFilter) {
+    $sql .= " WHERE DATE(order_date) = '$dateFilter'";
+}
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -61,6 +68,11 @@ $conn->close();
     </header>
     <main>
         <section>
+        <form method="get" action="">
+            <label for="filter_date">Filter by Date:</label>
+            <input type="date" id="filter_date" name="filter_date" value="<?php echo $dateFilter; ?>">
+            <input type="submit" value="Filter">
+        </form>
             <table>
                 <tr>
                     <th>Product</th>

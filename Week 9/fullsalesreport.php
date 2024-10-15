@@ -21,9 +21,22 @@ if ($productResult->num_rows > 0) {
     }
 }
 
-// Fetch orders
+// Initialize variables for date filter
+$filterDate = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
+$allTime = isset($_GET['all_time']);
+
+// Build SQL query with optional date filtering
 $sql = "SELECT order_id, order_date, order_details, grand_total FROM orders";
+if ($filterDate && !$allTime) {
+    $sql .= " WHERE DATE(order_date) = '$filterDate'";
+}
+$sql .= " ORDER BY order_date DESC";
+
 $result = $conn->query($sql);
+
+// Calculate earnings
+$totalEarnings = 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +53,14 @@ $result = $conn->query($sql);
     </header>
     <main>
         <section>
+            <form method="get" action="">
+                <label for="filter_date">Filter by Date:</label>
+                <input type="date" id="filter_date" name="filter_date" value="<?php echo $filterDate; ?>">
+                <label for="all_time">
+                    <input type="checkbox" id="all_time" name="all_time" <?php if ($allTime) echo 'checked'; ?>> All Time
+                </label>
+                <input type="submit" value="Filter">
+            </form>
             <?php if ($result->num_rows > 0): ?>
                 <table>
                     <tr>
@@ -52,6 +73,7 @@ $result = $conn->query($sql);
                         <th>Grand Total</th>
                     </tr>
                     <?php while ($row = $result->fetch_assoc()): ?>
+                        <?php $totalEarnings += $row["grand_total"]; ?>
                         <tr>
                             <td><?php echo $row["order_id"]; ?></td>
                             <td><?php echo $row["order_date"]; ?></td>
@@ -91,6 +113,9 @@ $result = $conn->query($sql);
                         </tr>
                     <?php endwhile; ?>
                 </table>
+                <p style="text-align: center; font-weight: bold; color: #8b4513;">
+                    Total Earnings: $<?php echo number_format($totalEarnings, 2); ?>
+                </p>
             <?php else: ?>
                 <p>No orders found.</p>
             <?php endif; ?>
