@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #d2b48c; /* Tan background to give a warm, cozy feel */
+    background-color: #d2b48c;
     display: flex;
     flex-direction: column;
 }
 
 header {
-    background-color: #CAB493; /* Light brown, coffee-themed */
+    background-color: #CAB493;
     color: #000000;
     text-align: center;
     padding: 20px;
@@ -16,10 +16,10 @@ header {
 
 footer {
     text-align: center;
-    background-color: #CAB493; /* Match header for consistency */
-    color: #000000; /* Ensure text is readable */
-    font-size: 0.9em; /* Slightly smaller font for footer */
-    border-top: 1px solid #ddd; /* Optional: add a border for separation */
+    background-color: #CAB493;
+    color: #000000;
+    font-size: 0.9em;
+    border-top: 1px solid #ddd;
 }
 
 main {
@@ -33,7 +33,7 @@ main {
 
 nav {
     width: 20%;
-    background-color: #DED1B5; /* Lighter brown to differentiate from the header */
+    background-color: #DED1B5;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
@@ -41,7 +41,7 @@ nav {
 
 nav a {
     display: block;
-    color: #8b4513; /* Dark brown for text */
+    color: #8b4513;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
@@ -49,20 +49,20 @@ nav a {
 }
 
 nav a:hover {
-    text-decoration: underline; /* Adds underline effect on hover */
+    text-decoration: underline;
 }
 
 section {
     width: 90%;
     padding: 1%;
     box-sizing: border-box;
-    background-color: #F5F4DF; /* Light cream background for content */
+    background-color: #F5F4DF;
     display: flex;
     flex-direction: column;
 }
 
 h1, h2 {
-    color: #8b4513; /* Consistent dark brown for titles */
+    color: #8b4513;
     margin: 20px 0;
     text-align: center;
 }
@@ -85,15 +85,15 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: #f5deb3; /* Light wheat color for even rows */
+    background-color: #f5deb3;
 }
 
 tr:nth-child(odd) {
-    background-color: #d2b48c; /* Tan color for odd rows */
+    background-color: #d2b48c;
 }
 
 button {
-    background-color: #8b4513; /* Dark brown for buttons */
+    background-color: #8b4513;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -103,7 +103,7 @@ button {
 }
 
 button:hover {
-    background-color: #5a2f1f; /* Darker shade for hover state */
+    background-color: #5a2f1f;
 }
 
 .button-group {
@@ -112,16 +112,16 @@ button:hover {
 }
 
 input[type="text"], input[type="number"] {
-    width: 60px; /* Smaller width for input boxes */
+    width: 60px;
     padding: 5px;
     font-size: 0.9em;
 }
 
 input[type="text"]:disabled, input[type="number"]:disabled {
-    background-color: #e0e0e0; /* Light gray background */
-    color: #a0a0a0; /* Gray text color */
-    border: 1px solid #ccc; /* Light gray border */
-    cursor: not-allowed; /* Cursor indicating non-interactivity */
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
 }
 
 .message {
@@ -132,7 +132,7 @@ input[type="text"]:disabled, input[type="number"]:disabled {
 }
 
 ul {
-    list-style-type: none; /* Remove default bullet points */
+    list-style-type: none;
     padding: 0;
     margin: 20px 0;
     text-align: center;
@@ -142,29 +142,29 @@ ul {
 }
 
 li {
-    background-color: #DED1B5; /* Light brown background, consistent with the theme */
+    background-color: #DED1B5;
     margin: 10px 0;
     padding: 15px;
-    border-radius: 5px; /* Rounded corners for a softer look */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover effects */
-    width: 100%; /* Take full width available from the flex container */
-    max-width: 50%; /* Constrain the max width to 50% */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    width: 100%;
+    max-width: 50%;
 }
 
 li a {
-    color: #8b4513; /* Dark brown text color */
+    color: #8b4513;
     text-decoration: none;
-    font-size: 1.2em; /* Slightly larger font size for emphasis */
+    font-size: 1.2em;
     font-weight: bold;
-    display: block; /* Ensures the link covers the entire list item */
+    display: block;
 }
 
 li:hover {
-    background-color: #CAB493; /* Slightly darker shade on hover */
-    transform: translateY(-5px); /* Lift effect on hover */
+    background-color: #CAB493;
+    transform: translateY(-5px);
 }
 
 li a:hover {
-    color: #5a2f1f; /* Darker brown on hover for text */
+    color: #5a2f1f;
 }

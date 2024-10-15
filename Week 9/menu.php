@@ -19,6 +19,7 @@ $message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : "";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,36 +49,37 @@ $message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : "";
         }
     </script>
 </head>
+
 <body>
-<header>
-    JavaJam Coffee House
-</header>
-<main>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="music.html">Music</a>
-        <a href="jobs.html">Jobs</a>
-    </nav>
-    <section>
-        <h2>Coffee at JavaJam</h2>
+    <header>
+        JavaJam Coffee House
+    </header>
+    <main>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="music.html">Music</a>
+            <a href="jobs.html">Jobs</a>
+        </nav>
+        <section>
+            <h2>Coffee at JavaJam</h2>
 
-        <?php if ($message): ?>
+            <?php if ($message): ?>
             <div class="message"><?php echo $message; ?></div>
-        <?php endif; ?>
+            <?php endif; ?>
 
-        <form id="menuForm" method="POST">
-            <table border="1">
-                <tr>
-                    <th>Select</th>
-                    <th>Product</th>
-                    <th>Description</th>
-                    <th>Current Price</th>
-                    <th>New Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
-                <?php
+            <form id="menuForm" method="POST">
+                <table border="1">
+                    <tr>
+                        <th>Select</th>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Current Price</th>
+                        <th>New Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    <?php
                 // Fetch product data including descriptions
                 $sql = "SELECT id, name, description, price FROM products";
                 $result = $conn->query($sql);
@@ -100,22 +102,23 @@ $message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : "";
                 }
                 $conn->close();
                 ?>
-                <tr>
-                    <td colspan="6" align="right" style="font-weight:bold; text-align: right;">Grand Total:</td>
-                    <td><span id="grandTotal">$0.00</span></td>
-                </tr>
-            </table>
-            <div class="button-group">
-                <button type="submit" formaction="priceupdate.php">Update Prices</button>
-                <button type="submit" formaction="submitorder.php">Submit Order</button>
-                <button type="submit" formaction="salesreport.php">Generate Report</button>
-            </div>
-        </form>
-    </section>
-</main>
-<footer>
-    <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
-    hongwei@leong.com</i></small>
-</footer>
+                    <tr>
+                        <td colspan="6" align="right" style="font-weight:bold; text-align: right;">Grand Total:</td>
+                        <td><span id="grandTotal">$0.00</span></td>
+                    </tr>
+                </table>
+                <div class="button-group">
+                    <button type="submit" formaction="priceupdate.php">Update Prices</button>
+                    <button type="submit" formaction="submitorder.php">Submit Order</button>
+                    <button type="submit" formaction="salesreport.php">Generate Report</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+                hongwei@leong.com</i></small>
+    </footer>
 </body>
+
 </html>

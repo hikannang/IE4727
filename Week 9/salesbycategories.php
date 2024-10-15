@@ -57,33 +57,35 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales by Category - JavaJam Coffee House</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>Sales by Category</h1>
     </header>
     <main>
         <section>
-        <form method="get" action="">
-            <label for="filter_date">Filter by Date:</label>
-            <input type="date" id="filter_date" name="filter_date" value="<?php echo $dateFilter; ?>">
-            <input type="submit" value="Filter">
-        </form>
+            <form method="get" action="">
+                <label for="filter_date">Filter by Date:</label>
+                <input type="date" id="filter_date" name="filter_date" value="<?php echo $dateFilter; ?>">
+                <input type="submit" value="Filter">
+            </form>
             <table>
                 <tr>
                     <th>Category</th>
                     <th>Total Quantity Sold</th>
                 </tr>
                 <?php foreach ($salesData as $categoryName => $totalQuantity): ?>
-                    <tr>
-                        <td><?php echo $categoryName; ?></td>
-                        <td><?php echo $totalQuantity; ?></td>
-                    </tr>
+                <tr>
+                    <td><?php echo $categoryName; ?></td>
+                    <td><?php echo $totalQuantity; ?></td>
+                </tr>
                 <?php endforeach; ?>
             </table>
             <div class="button-group">
@@ -92,8 +94,9 @@ $conn->close();
         </section>
     </main>
     <footer>
-    <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
-    hongwei@leong.com</i></small>
-</footer>
+        <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
+                hongwei@leong.com</i></small>
+    </footer>
 </body>
+
 </html>

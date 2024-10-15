@@ -69,12 +69,14 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Report - JavaJam Coffee House</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>Sales Reports</h1>
@@ -96,17 +98,17 @@ $conn->close();
                     <th>Total Sales (SGD)</th>
                 </tr>
                 <?php foreach ($totalQuantities as $id => $quantity): ?>
-                    <tr>
-                        <td><?php echo $productNames[$id]; ?></td>
-                        <td><?php echo $quantity; ?></td>
-                        <td>
-                            <?php
+                <tr>
+                    <td><?php echo $productNames[$id]; ?></td>
+                    <td><?php echo $quantity; ?></td>
+                    <td>
+                        <?php
                             $averagePrice = $productPrices[$id]['count'] > 0 ? $productPrices[$id]['totalPrice'] / $productPrices[$id]['count'] : 0;
                             echo number_format($averagePrice, 2);
                             ?>
-                        </td>
-                        <td><?php echo number_format($subtotalSales[$id], 2); ?></td>
-                    </tr>
+                    </td>
+                    <td><?php echo number_format($subtotalSales[$id], 2); ?></td>
+                </tr>
                 <?php endforeach; ?>
             </table>
             <p style="text-align: center; font-weight: bold; color: #8b4513;">
@@ -119,7 +121,8 @@ $conn->close();
     </main>
     <footer>
         <small><i>Copyright &copy; 2014 JavaJam Coffee House<br>
-        hongwei@leong.com</i></small>
+                hongwei@leong.com</i></small>
     </footer>
 </body>
+
 </html>
